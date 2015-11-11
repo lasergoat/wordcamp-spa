@@ -7,7 +7,7 @@ node_modules
 npm-debug.log
 readme.html
 license.txt
-index.php
+/index.php
 wp-activate.php
 wp-admin
 wp-blog-header.php
