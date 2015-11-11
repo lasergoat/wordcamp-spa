@@ -36,9 +36,6 @@ function create_patronus_type() {
 			'add_new' => 'Add New',
 			'edit_item' => __( 'Edit Patronus Details' ),
 			'add_new_item' => 'Add New Patronus Charm',
-			'show_in_rest'       => true,
-			'rest_base' => 'patronus',
-			'rest_controller_class' => 'WP_REST_Posts_Controller',
 		),
 		'public' => true,
 		'has_archive' => true,
@@ -47,6 +44,27 @@ function create_patronus_type() {
   );
 }
 
+add_filter('json_api_encode', 'json_api_encode_acf');
+
+
+function json_api_encode_acf($response) 
+{
+    if (isset($response['posts'])) {
+        foreach ($response['posts'] as $post) {
+            json_api_add_acf($post); // Add specs to each post
+        }
+    } 
+    else if (isset($response['post'])) {
+        json_api_add_acf($response['post']); // Add a specs property
+    }
+
+    return $response;
+}
+
+function json_api_add_acf(&$post) 
+{
+    $post->acf = get_fields($post->id);
+}
 /**
  * Set the content width based on the theme's design and stylesheet.
  *
