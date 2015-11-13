@@ -19,7 +19,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://homepress.app/api/get_posts/?post_type=patronus')
+    fetch('http://homepress.app/api/get_posts/?post_type=patronus&count=99')
       .then((res) => res.json())
       .then((res) => {
         this.setState({
@@ -37,7 +37,8 @@ class App extends React.Component {
         <ul className="pt-list">
         { this.state.patronuses.map((patronus) => 
           <li className="pt-item" key={patronus.id}>
-            <strong>{patronus.type}</strong> - {patronus.description}
+            <strong>{patronus.type}</strong> - 
+            <span dangerouslySetInnerHTML={{__html: patronus.description}}></span>
           </li>
         )}
         </ul>
