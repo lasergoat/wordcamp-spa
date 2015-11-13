@@ -25,7 +25,7 @@ wp-signup.php
 wp-trackback.php
 xmlrpc.php
 
-wp-content/uploads/*
+
 wp-content/themes/twentyfifteen/*
 wp-content/themes/twentyten/*
 wp-content/themes/twentyfourteen/*
