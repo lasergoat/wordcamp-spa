@@ -25,6 +25,12 @@
  * @since Twenty Fifteen 1.0
  */
 
+// Patronus SPA app shortcode
+function patronus_func($atts) {
+	return '<div id="app"></div><script src="' . get_template_directory_uri() . '/patronus/dist/bundle.js"></script>';
+}
+add_shortcode('patronus', 'patronus_func');
+
 add_action( 'init', 'create_patronus_type' );
 function create_patronus_type() {
   register_post_type( 'patronus',
