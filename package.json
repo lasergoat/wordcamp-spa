@@ -10,5 +10,8 @@
   "license": "ISC",
   "devDependencies": {
     "homepress": "^0.1.0"
+  },
+  "dependencies": {
+    "lodash": "^3.10.1"
   }
 }
