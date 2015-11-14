@@ -7,6 +7,7 @@ function mapPatronus(patronus) {
   return {
     id: patronus.id,
     visible: true,
+    url: patronus.url,
     ...patronus.acf
   };
 }
@@ -48,8 +49,10 @@ class App extends React.Component {
   renderItem(patronus) {
     return (
       <li className={`pt-item ${patronus.visible ? '' : 'hidden'}`} key={patronus.id}>
-        <strong>{patronus.type}</strong> -&nbsp;
-        <span dangerouslySetInnerHTML={{__html: patronus.description}}></span>
+        <a href={patronus.url}>
+          <strong>{patronus.type}</strong> -&nbsp;
+          <span dangerouslySetInnerHTML={{__html: patronus.description}}></span>
+        </a>
       </li>
     );
   }
