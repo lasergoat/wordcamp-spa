@@ -45,6 +45,15 @@ class App extends React.Component {
       });
   }
 
+  renderItem(patronus) {
+    return (
+      <li className={`pt-item ${patronus.visible ? '' : 'hidden'}`} key={patronus.id}>
+        <strong>{patronus.type}</strong> -&nbsp;
+        <span dangerouslySetInnerHTML={{__html: patronus.description}}></span>
+      </li>
+    );
+  }
+
   render() {
     let handleSearch = debounce(this.handleSearch, 200).bind(this);
 
@@ -54,11 +63,8 @@ class App extends React.Component {
           <input type="text" placeholder="Search for a Patronus..." onChange={(e) => handleSearch(e.target.value)} className="pt-input"/>
         </div>
         <ul className="pt-list">
-        { this.state.patronuses.filter((patronus) => patronus.visible).map((patronus) => 
-          <li className="pt-item" key={patronus.id}>
-            <strong>{patronus.type}</strong> - 
-            <span dangerouslySetInnerHTML={{__html: patronus.description}}></span>
-          </li>
+        { this.state.patronuses.map((patronus) => 
+          this.renderItem(patronus)
         )}
         </ul>
       </div>
