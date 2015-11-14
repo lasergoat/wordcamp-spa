@@ -53,6 +53,36 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 
 /**
+ * Custom Patronus styles
+ */
+
+.pt-list {
+	list-style-type: none;
+	max-height: 40rem;
+	overflow-y: auto;
+}
+
+.pt-item {
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding: 0 0.5em;
+	margin: 0.5em 0;
+	border: 1px solid #eee;
+	max-height: 4em;
+	line-height: 4em;
+	transition: all 0.3s ease-in-out;
+}
+
+.pt-item.hidden {
+	max-height: 0;
+	margin: 0;
+	border-color: transparent;
+	border-width: 0;
+}
+
+/**
  * 1.0 - Reset
  *
  * Resetting and rebuilding styles have been helped along thanks to the fine
