@@ -36,7 +36,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://homepress.app/api/get_posts/?post_type=patronus&count=99')
+    fetch('/api/get_posts/?post_type=patronus&count=99')
       .then((res) => res.json())
       .then((res) => {
         this.setState({
