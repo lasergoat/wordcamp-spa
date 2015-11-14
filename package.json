@@ -4,10 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "postinstall" : "npm install homepress -g",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "homepress": "^0.1.0"
+  },
+  "dependencies": {
+    "lodash": "^3.10.1"
   }
 }
