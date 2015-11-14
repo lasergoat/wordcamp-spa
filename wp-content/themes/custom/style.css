@@ -56,6 +56,13 @@ Use it to make something cool, have fun, and share what you've learned with othe
  * Custom Patronus styles
  */
 
+.pt-app {
+	position: relative;
+	height: 50rem;
+	transform-style: preserve-3d;
+	perspective: 1000;
+}
+
 .pt-list {
 	list-style-type: none;
 	max-height: 40rem;
@@ -73,6 +80,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 	max-height: 4em;
 	line-height: 4em;
 	transition: all 0.3s ease-in-out;
+	cursor: pointer;
 }
 
 .pt-item.hidden {
@@ -85,6 +93,44 @@ Use it to make something cool, have fun, and share what you've learned with othe
 .pt-item > a {
 	text-decoration: none;
 	border-bottom: none !important;
+}
+
+.pt-patronus {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: auto;
+	background: rgba(255,255,255,0.9);
+	min-height: 50rem;
+	text-align: center;
+	animation: wee 0.5s ease-in-out both;
+	z-index: 10;
+}
+
+.pt-patronus > h3 {
+	display: block;
+	width: 100%;
+}
+
+@keyframes wee {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.pt-p {
+	padding: 0 3rem;
+}
+
+.pt-exit {
+	position: absolute;
+	height: 2rem;
+	width: 2rem;
 }
 
 /**

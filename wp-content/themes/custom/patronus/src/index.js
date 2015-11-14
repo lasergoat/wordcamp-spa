@@ -32,7 +32,14 @@ class App extends React.Component {
             : true;
 
           return patronus;
-        })
+        }),
+      patronus: null
+    });
+  }
+
+  handleClick(patronus) {
+    this.setState({
+      patronus
     });
   }
 
@@ -48,13 +55,23 @@ class App extends React.Component {
 
   renderItem(patronus) {
     return (
-      <li className={`pt-item ${patronus.visible ? '' : 'hidden'}`} key={patronus.id}>
-        <a href={patronus.url}>
-          <strong>{patronus.type}</strong> -&nbsp;
-          <span dangerouslySetInnerHTML={{__html: patronus.description}}></span>
-        </a>
+      <li className={`pt-item ${patronus.visible ? '' : 'hidden'}`} key={patronus.id} onClick={() => this.handleClick(patronus)}>
+        <strong>{patronus.type}</strong> -&nbsp;
+        <span dangerouslySetInnerHTML={{__html: patronus.description}}></span>
       </li>
     );
+  }
+
+  renderPatronus() {
+    let patronus = this.state.patronus;
+
+    return (
+      <div className="pt-patronus" onClick={() => this.setState({patronus: null})}>
+        <h3>{patronus.type}</h3>
+        <img src={patronus.image.sizes.medium} alt="" style={{margin: '1rem auto', display: 'block'}}/>
+        <div className="pt-p" dangerouslySetInnerHTML={{__html: patronus.description}}></div>
+      </div>
+    )
   }
 
   render() {
@@ -62,6 +79,9 @@ class App extends React.Component {
 
     return (
       <div className="pt-app">
+        { this.state.patronus && 
+          this.renderPatronus()
+        }
         <div className="pt-field">
           <input type="text" placeholder="Search for a Patronus..." onChange={(e) => handleSearch(e.target.value)} className="pt-input"/>
         </div>
